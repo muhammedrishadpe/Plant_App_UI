@@ -8,6 +8,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:plantapp/constants.dart';
 import 'package:plantapp/screens/home/components/title_with_more_btn.dart';
 import '../components/header_with_searchbox.dart';
+import '../components/recomend_plant.dart';
 
 class Body extends StatelessWidget {
   @override
@@ -23,114 +24,40 @@ class Body extends StatelessWidget {
             title: "Recomended",
             press: () {},
           ),
-          // it WIll Cover 40% of our total width
-          SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Row(
-              children: [
-                RecomendedPlantCard(
-                  image: "assets/images/image_1.png",
-                  title: "Samantha",
-                  country: "Russia",
-                  press: () {},
-                  price: 12,
-                ),
-                RecomendedPlantCard(
-                  image: "assets/images/image_1.png",
-                  title: "Samantha",
-                  country: "Russia",
-                  press: () {},
-                  price: 12,
-                ),
-                RecomendedPlantCard(
-                  image: "assets/images/image_1.png",
-                  title: "Samantha",
-                  country: "Russia",
-                  press: () {},
-                  price: 12,
-                ),
-              ],
-            ),
+          RecomendPlant(),
+          TitleWithMoreBtn(
+            title: 'Featured Plants',
+            press: () {},
           ),
+          FeaturedPlantCard(size: size)
         ],
       ),
     );
   }
 }
 
-class RecomendedPlantCard extends StatelessWidget {
-  const RecomendedPlantCard({
+class FeaturedPlantCard extends StatelessWidget {
+  const FeaturedPlantCard({
     Key? key,
-    required this.image,
-    required this.title,
-    required this.country,
-    required this.price,
-    required this.press,
+    required this.size,
   }) : super(key: key);
-  final String image, title, country;
-  final int price;
-  final Function()? press;
+
+  final Size size;
+
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     return Container(
       margin: EdgeInsets.only(
-          left: kDefaultPadding,
-          top: kDefaultPadding / 2,
-          bottom: kDefaultPadding * 2.5),
-      width: size.width * 0.4,
-      child: Column(
-        children: <Widget>[
-          Image.asset(image),
-          GestureDetector(
-            onTap: press,
-            child: Container(
-              padding: EdgeInsets.all(kDefaultPadding / 2),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(10),
-                  bottomRight: Radius.circular(10),
-                ),
-                boxShadow: [
-                  BoxShadow(
-                    offset: Offset(0, 10),
-                    blurRadius: 50,
-                    color: kPrimaryColor.withOpacity(0.23),
-                  ),
-                ],
-              ),
-              child: Row(
-                children: <Widget>[
-                  RichText(
-                    text: TextSpan(
-                      children: [
-                        TextSpan(
-                          text: "$title\n".toUpperCase(),
-                          style: Theme.of(context).textTheme.button,
-                        ),
-                        TextSpan(
-                          text: "$country".toUpperCase(),
-                          style:
-                              TextStyle(color: kPrimaryColor.withOpacity(0.5)),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Spacer(),
-                  Text(
-                    '\$$price',
-                    style: Theme.of(context)
-                        .textTheme
-                        .button
-                        ?.copyWith(color: kPrimaryColor),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ],
+        left: kDefaultPadding,
+        top: kDefaultPadding / 2,
+        bottom: kDefaultPadding / 2,
       ),
+      width: size.width * 0.8,
+      height: 185,
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          image: DecorationImage(
+              image: AssetImage("assets/images/bottom_img_1.png"))),
     );
   }
 }
