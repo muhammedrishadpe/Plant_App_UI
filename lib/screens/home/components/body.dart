@@ -9,6 +9,7 @@ import 'package:plantapp/constants.dart';
 import 'package:plantapp/screens/home/components/title_with_more_btn.dart';
 import '../components/header_with_searchbox.dart';
 import '../components/recomend_plant.dart';
+import '../components/featured_plants.dart';
 
 class Body extends StatelessWidget {
   @override
@@ -29,35 +30,12 @@ class Body extends StatelessWidget {
             title: 'Featured Plants',
             press: () {},
           ),
-          FeaturedPlantCard(size: size)
+          FeaturedPlant(),
+          SizedBox(
+            height: kDefaultPadding,
+          )
         ],
       ),
-    );
-  }
-}
-
-class FeaturedPlantCard extends StatelessWidget {
-  const FeaturedPlantCard({
-    Key? key,
-    required this.size,
-  }) : super(key: key);
-
-  final Size size;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(
-        left: kDefaultPadding,
-        top: kDefaultPadding / 2,
-        bottom: kDefaultPadding / 2,
-      ),
-      width: size.width * 0.8,
-      height: 185,
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          image: DecorationImage(
-              image: AssetImage("assets/images/bottom_img_1.png"))),
     );
   }
 }

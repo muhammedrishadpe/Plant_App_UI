@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:plantapp/constants.dart';
+import 'package:plantapp/screens/detiles/components/detiles_screen.dart';
 
 class RecomendPlant extends StatelessWidget {
   const RecomendPlant({
@@ -16,21 +17,42 @@ class RecomendPlant extends StatelessWidget {
             image: "assets/images/image_1.png",
             title: "Samantha",
             country: "Russia",
-            press: () {},
+            press: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => DetailsScreen(),
+                ),
+              );
+            },
             price: 12,
           ),
           RecomendedPlantCard(
             image: "assets/images/image_2.png",
             title: "Angelica",
             country: "Russia",
-            press: () {},
+            press: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => DetailsScreen(),
+                ),
+              );
+            },
             price: 12,
           ),
           RecomendedPlantCard(
             image: "assets/images/image_3.png",
             title: "Samantha",
             country: "Russia",
-            press: () {},
+            press: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => DetailsScreen(),
+                ),
+              );
+            },
             price: 12,
           ),
         ],
@@ -50,7 +72,7 @@ class RecomendedPlantCard extends StatelessWidget {
   }) : super(key: key);
   final String image, title, country;
   final int price;
-  final Function()? press;
+  final Function() press;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
